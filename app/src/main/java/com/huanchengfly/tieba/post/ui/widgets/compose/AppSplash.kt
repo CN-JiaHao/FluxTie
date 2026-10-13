@@ -161,7 +161,7 @@ fun AppSplashOverlay() {
                 }
                 Spacer(modifier = Modifier.height(24.dp))
                 // 标语：微延时淡入上浮
-                SplashFadeIn(delayMillis = 450) {
+                SplashFadeIn(delayMillis = 180) {
                     Text(
                         text = stringResource(id = R.string.splash_tagline),
                         fontSize = 14.sp,
@@ -172,7 +172,7 @@ fun AppSplashOverlay() {
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 // 应用名:标语之后、Loading 之前
-                SplashFadeIn(delayMillis = 580) {
+                SplashFadeIn(delayMillis = 280) {
                     Text(
                         text = "FluxTie",
                         fontSize = 26.sp,
@@ -184,7 +184,7 @@ fun AppSplashOverlay() {
                 }
                 Spacer(modifier = Modifier.height(40.dp))
                 // 液态 blob Loading：应用名出现后微延时淡入
-                SplashFadeIn(delayMillis = 720) {
+                SplashFadeIn(delayMillis = 380) {
                     BlobLoading()
                 }
             }
@@ -212,17 +212,11 @@ private fun AppIcon(bitmap: ImageBitmap) {
     )
 }
 
-/** 图标入场:缩放 0.92→1 + 淡入,轻柔不抢戏 */
+/** 图标入场:与系统启动屏同源同位延续,初始满态无缝衔接动画终态 */
 @Composable
 private fun SplashIconEntrance(content: @Composable () -> Unit) {
-    val scale = remember { Animatable(0.92f) }
-    val iconAlpha = remember { Animatable(0f) }
-    LaunchedEffect(Unit) {
-        launch {
-            scale.animateTo(1f, tween(durationMillis = 500, easing = FastOutSlowInEasing))
-        }
-        iconAlpha.animateTo(1f, tween(durationMillis = 400, easing = EaseOutCubic))
-    }
+    val scale = remember { Animatable(1f) }
+    val iconAlpha = remember { Animatable(1f) }
     Box(modifier = Modifier.graphicsLayer {
         scaleX = scale.value
         scaleY = scale.value

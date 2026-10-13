@@ -1,21 +1,21 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="100"
-    android:viewportHeight="100">
+    android:viewportWidth="108"
+    android:viewportHeight="108">
     <group>
-        <clip-path android:pathData="M0,-0h100v100h-100z" />
+        <clip-path android:pathData="M0,0h108v108h-108z"/>
         <path
             android:fillColor="@color/ic_launcher_new_themed_foreground_1"
-            android:pathData="m36.39,42.19l27.89,0a4.69,4.69 0 0 1 4.69,4.69l0,31.93a4.69,4.69 0 0 1 -4.69,4.69l-27.89,0a4.69,4.69 0 0 1 -4.69,-4.69l0,-31.93a4.69,4.69 0 0 1 4.69,-4.69z" />
+            android:pathData="M 50,29 H 66 C 73.732,29 80,35.268 80,43 V 51 C 80,58.732 73.732,65 66,65 H 50 C 42.268,65 36,58.732 36,51 V 43 C 36,35.268 42.268,29 50,29 Z"/>
         <path
-            android:fillColor="#fff"
-            android:pathData="m32.54,48.87l34.92,0c3.06,0 5.53,2.95 5.53,6.59l0,44.55l-45.98,0l0,-44.55c0,-3.64 2.48,-6.59 5.53,-6.59z" />
-        <path
-            android:fillColor="@color/ic_launcher_new_themed_foreground_2"
-            android:pathData="m35.8,59.86l28.41,0a2.22,2.22 0 0 1 2.22,2.22l0,0a2.22,2.22 0 0 1 -2.22,2.22l-28.41,0a2.22,2.22 0 0 1 -2.22,-2.22l0,0a2.22,2.22 0 0 1 2.22,-2.22z" />
+            android:fillColor="@color/white"
+            android:pathData="M 46,34 H 62 C 69.732,34 76,40.268 76,48 V 56 C 76,63.732 69.732,70 62,70 H 44 C 37.0,70.0 31.0,73.0 28.5,75.5 C 26.8,76.5 26.0,74.0 28.0,71.5 C 30.5,68.0 32.0,61.0 32.0,48.0 C 32.0,40.268 38.268,34.0 46.0,34.0 Z"/>
         <path
             android:fillColor="@color/ic_launcher_new_themed_foreground_2"
-            android:pathData="m35.8,68.08l17.24,0a2.22,2.22 0 0 1 2.22,2.22l0,0a2.22,2.22 0 0 1 -2.22,2.22l-17.24,0a2.22,2.22 0 0 1 -2.22,-2.22l0,0a2.22,2.22 0 0 1 2.22,-2.22z" />
+            android:pathData="M 45.25,43.5 H 64.75 C 66.545,43.5 68,44.955 68,46.75 C 68,48.545 66.545,50 64.75,50 H 45.25 C 43.455,50 42,48.545 42,46.75 C 42,44.955 43.455,43.5 45.25,43.5 Z"/>
+        <path
+            android:fillColor="@color/ic_launcher_new_themed_foreground_2"
+            android:pathData="M 45.25,54.5 H 55.75 C 57.545,54.5 59,55.955 59,57.75 C 59,59.545 57.545,61 55.75,61 H 45.25 C 43.455,61 42,59.545 42,57.75 C 42,55.955 43.455,54.5 45.25,54.5 Z"/>
     </group>
 </vector>

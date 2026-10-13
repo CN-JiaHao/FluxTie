@@ -1,1 +1,308 @@
-<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"><aapt:attr name="android:drawable"><vector android:height="432dp" android:width="432dp" android:viewportHeight="432" android:viewportWidth="432"><group android:name="_R_G"><group android:name="_R_G_L_1_G_T_1" android:translateX="216.123" android:translateY="594.061" android:scaleX="2.61" android:scaleY="2.61" android:rotation="0"><group android:name="_R_G_L_1_G" android:translateX="-28.125" android:translateY="-61.938"><path android:name="_R_G_L_1_G_D_0_P_0" android:fillColor="#aac5ea" android:fillAlpha="1" android:fillType="nonZero" android:pathData=" M7.25 0.25 C7.25,0.25 48.88,0.25 48.88,0.25 C52.74,0.25 55.88,3.38 55.88,7.25 C55.88,7.25 55.88,54.91 55.88,54.91 C55.88,58.77 52.74,61.91 48.88,61.91 C48.88,61.91 7.25,61.91 7.25,61.91 C3.38,61.91 0.25,58.77 0.25,54.91 C0.25,54.91 0.25,7.25 0.25,7.25 C0.25,3.38 3.38,0.25 7.25,0.25c "/></group></group><group android:name="_R_G_L_0_G_T_1" android:translateX="216.031" android:translateY="574.406" android:rotation="0"><group android:name="_R_G_L_0_G" android:translateX="-216.031" android:translateY="-357.156"><group android:name="_R_G_L_0_G_L_2_G" android:translateX="181" android:translateY="260.814" android:pivotX="35" android:pivotY="26.5" android:scaleX="2.74286" android:scaleY="2.74286"><path android:name="_R_G_L_0_G_L_2_G_D_0_P_0" android:fillColor="#538ace" android:fillAlpha="1" android:fillType="nonZero" android:pathData=" M8.5 0.25 C8.5,0.25 60.62,0.25 60.62,0.25 C65.18,0.25 68.88,4.65 68.88,10.08 C68.88,10.08 68.88,51.94 68.88,51.94 C68.88,51.94 0.25,51.94 0.25,51.94 C0.25,51.94 0.25,10.08 0.25,10.08 C0.25,4.65 3.95,0.25 8.5,0.25c "/></group><group android:name="_R_G_L_0_G_L_1_G" android:translateX="141" android:translateY="307" android:pivotY="4" android:scaleX="3" android:scaleY="3"><path android:name="_R_G_L_0_G_L_1_G_D_0_P_0" android:fillColor="#fffcff" android:fillAlpha="1" android:fillType="nonZero" android:pathData=" M3.56 0.25 C3.56,0.25 29.29,0.25 29.29,0.25 C31.12,0.25 32.6,1.73 32.6,3.56 C32.6,3.56 32.6,3.56 32.6,3.56 C32.6,5.39 31.12,6.87 29.29,6.87 C29.29,6.87 3.56,6.87 3.56,6.87 C1.73,6.87 0.25,5.39 0.25,3.56 C0.25,3.56 0.25,3.56 0.25,3.56 C0.25,1.73 1.73,0.25 3.56,0.25c "/></group><group android:name="_R_G_L_0_G_L_0_G" android:translateX="141" android:translateY="266" android:pivotY="4" android:scaleX="3" android:scaleY="3"><path android:name="_R_G_L_0_G_L_0_G_D_0_P_0" android:fillColor="#fffcff" android:fillAlpha="1" android:fillType="nonZero" android:pathData=" M3.56 0.25 C3.56,0.25 45.96,0.25 45.96,0.25 C47.79,0.25 49.27,1.73 49.27,3.56 C49.27,3.56 49.27,3.56 49.27,3.56 C49.27,5.39 47.79,6.87 45.96,6.87 C45.96,6.87 3.56,6.87 3.56,6.87 C1.73,6.87 0.25,5.39 0.25,3.56 C0.25,3.56 0.25,3.56 0.25,3.56 C0.25,1.73 1.73,0.25 3.56,0.25c "/></group></group></group></group><group android:name="time_group"/></vector></aapt:attr><target android:name="_R_G_L_1_G_T_1"><aapt:attr name="android:animation"><set android:ordering="together"><objectAnimator android:propertyName="translateXY" android:duration="167" android:startOffset="0" android:propertyXName="translateX" android:propertyYName="translateY" android:pathData="M 216.123,594.061C 216.123,570.2950000000001 216.123,594.2280000000001 216.123,594.061"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="translateXY" android:duration="267" android:startOffset="167" android:propertyXName="translateX" android:propertyYName="translateY" android:pathData="M 216.123,594.061C 216.123,570.2950000000001 216.123,353.60299999999995 216.123,353.436"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator></set></aapt:attr></target><target android:name="_R_G_L_1_G_T_1"><aapt:attr name="android:animation"><set android:ordering="together"><objectAnimator android:propertyName="rotation" android:duration="167" android:startOffset="0" android:valueFrom="0" android:valueTo="0" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="333" android:startOffset="167" android:valueFrom="0" android:valueTo="0" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="500" android:valueFrom="0" android:valueTo="-8" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="583" android:valueFrom="-8" android:valueTo="0" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="667" android:valueFrom="0" android:valueTo="8" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="750" android:valueFrom="8" android:valueTo="0" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator></set></aapt:attr></target><target android:name="_R_G_L_0_G_T_1"><aapt:attr name="android:animation"><set android:ordering="together"><objectAnimator android:propertyName="translateXY" android:duration="167" android:startOffset="0" android:propertyXName="translateX" android:propertyYName="translateY" android:pathData="M 216.031,574.406C 216.031,538.698 216.031,610.1139999999999 216.031,574.406"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="translateXY" android:duration="133" android:startOffset="167" android:propertyXName="translateX" android:propertyYName="translateY" android:pathData="M 216.031,574.406C 216.031,538.698 216.031,395.86400000000003 216.031,360.156"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.667,1 1.0,1.0"/></aapt:attr></objectAnimator></set></aapt:attr></target><target android:name="_R_G_L_0_G_T_1"><aapt:attr name="android:animation"><set android:ordering="together"><objectAnimator android:propertyName="rotation" android:duration="500" android:startOffset="0" android:valueFrom="0" android:valueTo="0" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.833,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="500" android:valueFrom="0" android:valueTo="-3" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.333,0 0.833,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="583" android:valueFrom="-3" android:valueTo="0" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.167,0 0.833,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="667" android:valueFrom="0" android:valueTo="3" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.167,0 0.833,1 1.0,1.0"/></aapt:attr></objectAnimator><objectAnimator android:propertyName="rotation" android:duration="83" android:startOffset="750" android:valueFrom="3" android:valueTo="0" android:valueType="floatType"><aapt:attr name="android:interpolator"><pathInterpolator android:pathData="M 0.0,0.0 c0.167,0 0.833,1 1.0,1.0"/></aapt:attr></objectAnimator></set></aapt:attr></target><target android:name="time_group"><aapt:attr name="android:animation"><set android:ordering="together"><objectAnimator android:propertyName="translateX" android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="1" android:valueType="floatType"/></set></aapt:attr></target></animated-vector>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="432dp"
+            android:height="432dp"
+            android:viewportWidth="432"
+            android:viewportHeight="432">
+            
+            <!-- Background Circle -->
+            <group
+                android:name="circle_group"
+                android:pivotX="216"
+                android:pivotY="216">
+                <path
+                    android:name="bg_circle"
+                    android:fillColor="#3875E0"
+                    android:pathData="M 216,24 A 192,192 0 1,0 216,408 A 192,192 0 1,0 216,24 Z" />
+            </group>
+            
+            <!-- Rear Card Group -->
+            <group
+                android:name="rear_group"
+                android:pivotX="232"
+                android:pivotY="188">
+                <path
+                    android:name="rear_card"
+                    android:fillColor="#A2C8F8"
+                    android:pathData="M 200,116 H 264 C 294.93,116 320,141.07 320,172 V 204 C 320,234.93 294.93,260 264,260 H 200 C 169.07,260 144,234.93 144,204 V 172 C 144,141.07 169.07,116 200,116 Z" />
+            </group>
+            
+            <!-- Front Bubble & Content Group -->
+            <group
+                android:name="front_group"
+                android:pivotX="216"
+                android:pivotY="208">
+                
+                <!-- Front Bubble Body (Crisp White) -->
+                <path
+                    android:name="front_bubble"
+                    android:fillColor="#FFFFFF"
+                    android:pathData="M 184,136 H 248 C 278.93,136 304,161.07 304,192 V 224 C 304,254.93 278.93,280 248,280 H 176 C 148,280 124,292 114,302 C 107.2,306 104,296 112,286 C 122,272 128,244 128,192 C 128,161.07 153.07,136 184,136 Z" />
+                
+                <!-- Top Post Bar (Cobalt Blue #2D68D6) -->
+                <group
+                    android:name="top_bar_group"
+                    android:pivotX="168"
+                    android:pivotY="187">
+                    <path
+                        android:name="top_bar"
+                        android:fillColor="#2D68D6"
+                        android:pathData="M 181,174 H 259 C 266.18,174 272,179.82 272,187 C 272,194.18 266.18,200 259,200 H 181 C 173.82,200 168,194.18 168,187 C 168,179.82 173.82,174 181,174 Z" />
+                </group>
+                
+                <!-- Bottom Post Bar (Cobalt Blue #2D68D6) -->
+                <group
+                    android:name="bot_bar_group"
+                    android:pivotX="168"
+                    android:pivotY="231">
+                    <path
+                        android:name="bot_bar"
+                        android:fillColor="#2D68D6"
+                        android:pathData="M 181,218 H 223 C 230.18,218 236,223.82 236,231 C 236,238.18 230.18,244 223,244 H 181 C 173.82,244 168,238.18 168,231 C 168,223.82 173.82,218 181,218 Z" />
+                </group>
+            </group>
+            
+            <group android:name="time_marker" />
+        </vector>
+    </aapt:attr>
+    
+    <!-- 1. Circle Scale & Bloom Animation (0 - 450ms) -->
+    <target android:name="circle_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:duration="450"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.72"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="450"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0.72"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="bg_circle">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:duration="220"
+                    android:interpolator="@android:interpolator/linear"
+                    android:propertyName="fillAlpha"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    
+    <!-- 2. Rear Card Elastic Rise & Scale (60ms - 520ms) -->
+    <target android:name="rear_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:startOffset="60"
+                    android:duration="460"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.60"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:startOffset="60"
+                    android:duration="460"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0.60"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:startOffset="60"
+                    android:duration="460"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateY"
+                    android:valueFrom="36.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="rear_card">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:startOffset="60"
+                    android:duration="200"
+                    android:interpolator="@android:interpolator/linear"
+                    android:propertyName="fillAlpha"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    
+    <!-- 3. Front Bubble Elastic Pop & Settle Tilt (120ms - 950ms) -->
+    <target android:name="front_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <!-- Elastic Scale Entrance -->
+                <objectAnimator
+                    android:startOffset="120"
+                    android:duration="320"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.55"
+                    android:valueTo="1.06"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:startOffset="440"
+                    android:duration="160"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1.06"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:startOffset="120"
+                    android:duration="320"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0.55"
+                    android:valueTo="1.06"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:startOffset="440"
+                    android:duration="160"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.06"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                    
+                <!-- Translate Y Float Up -->
+                <objectAnimator
+                    android:startOffset="120"
+                    android:duration="420"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateY"
+                    android:valueFrom="44.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+                    
+                <!-- Expressive Micro-Tilt (600ms - 920ms) -->
+                <objectAnimator
+                    android:startOffset="600"
+                    android:duration="160"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="rotation"
+                    android:valueFrom="0.0"
+                    android:valueTo="-3.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:startOffset="760"
+                    android:duration="160"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="rotation"
+                    android:valueFrom="-3.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="front_bubble">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:startOffset="120"
+                    android:duration="220"
+                    android:interpolator="@android:interpolator/linear"
+                    android:propertyName="fillAlpha"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    
+    <!-- 4. Top Post Bar Stream Expansion (320ms - 560ms) -->
+    <target android:name="top_bar_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:startOffset="320"
+                    android:duration="240"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="top_bar">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:startOffset="320"
+                    android:duration="140"
+                    android:interpolator="@android:interpolator/linear"
+                    android:propertyName="fillAlpha"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    
+    <!-- 5. Bottom Post Bar Stream Expansion (420ms - 660ms) -->
+    <target android:name="bot_bar_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:startOffset="420"
+                    android:duration="240"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="bot_bar">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:startOffset="420"
+                    android:duration="140"
+                    android:interpolator="@android:interpolator/linear"
+                    android:propertyName="fillAlpha"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    
+    <!-- 6. Total Timing Sentinel (1000ms duration) -->
+    <target android:name="time_marker">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:duration="1000"
+                    android:propertyName="translateX"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
