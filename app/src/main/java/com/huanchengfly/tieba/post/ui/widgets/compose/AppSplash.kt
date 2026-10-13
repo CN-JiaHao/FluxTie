@@ -103,27 +103,27 @@ fun AppSplashOverlay() {
     var visible by remember { mutableStateOf(true) }
     var isHeaderStage by remember { mutableStateOf(false) }
 
-    // 1. 一镜到底核心动效：Logo 向上浮升并在空间上等比缩放
+    // 1. 一镜到底核心动效：Logo 充分向上浮升（-120dp）并在空间上等比缩放至 88dp 精致头部徽标
     val logoTranslateY by animateDpAsState(
-        targetValue = if (isHeaderStage) (-96).dp else 0.dp,
-        animationSpec = tween(durationMillis = 580, easing = FastOutSlowInEasing),
+        targetValue = if (isHeaderStage) (-120).dp else 0.dp,
+        animationSpec = tween(durationMillis = 600, easing = FastOutSlowInEasing),
         label = "logoTranslateY"
     )
     val logoScale by animateFloatAsState(
-        targetValue = if (isHeaderStage) 0.60f else 1.0f,
-        animationSpec = tween(durationMillis = 580, easing = FastOutSlowInEasing),
+        targetValue = if (isHeaderStage) 0.55f else 1.0f,
+        animationSpec = tween(durationMillis = 600, easing = FastOutSlowInEasing),
         label = "logoScale"
     )
 
     // 2. 标语、应用名与 Loading 随动滑入与淡入
     val contentRevealAlpha by animateFloatAsState(
         targetValue = if (isHeaderStage) 1.0f else 0.0f,
-        animationSpec = tween(durationMillis = 420, delayMillis = 120, easing = FastOutSlowInEasing),
+        animationSpec = tween(durationMillis = 440, delayMillis = 140, easing = FastOutSlowInEasing),
         label = "contentRevealAlpha"
     )
     val contentRevealSlide by animateDpAsState(
         targetValue = if (isHeaderStage) 0.dp else 24.dp,
-        animationSpec = tween(durationMillis = 460, delayMillis = 120, easing = FastOutSlowInEasing),
+        animationSpec = tween(durationMillis = 480, delayMillis = 140, easing = FastOutSlowInEasing),
         label = "contentRevealSlide"
     )
 
@@ -173,7 +173,7 @@ fun AppSplashOverlay() {
                 .graphicsLayer { alpha = bgAlpha }
                 .background(splashBg)
         ) {
-            // 核心应用图标：初始 160dp 绝对居中，随着一镜到底上移至头部并等比缩放至 96dp
+            // 核心应用图标：初始 160dp 绝对居中，随着一镜到底上移至头部（-120dp）并等比缩放至 88dp
             Box(
                 modifier = Modifier
                     .align(Alignment.Center)
@@ -187,12 +187,12 @@ fun AppSplashOverlay() {
                 SplashBrandIcon(size = 160.dp)
             }
 
-            // 品牌文案与 Loading：在 Logo 上浮过程中顺势跟随滑入展开，紧随 Logo 底部
+            // 品牌文案与 Loading：在 Logo 上浮过程中顺势跟随滑入展开，与 Logo 底部保持舒适通透间距
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .offset(y = 4.dp)
+                    .offset(y = 36.dp)
                     .graphicsLayer {
                         translationY = (contentRevealSlide + exitTranslateY).toPx()
                         alpha = contentRevealAlpha * exitAlpha
@@ -207,7 +207,7 @@ fun AppSplashOverlay() {
                     fontFamily = SplashFontFamily,
                     color = ExtendedTheme.colors.textSecondary
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     text = "FluxTie",
                     fontSize = 26.sp,
@@ -216,7 +216,7 @@ fun AppSplashOverlay() {
                     fontFamily = SplashFontFamily,
                     color = ExtendedTheme.colors.text
                 )
-                Spacer(modifier = Modifier.height(28.dp))
+                Spacer(modifier = Modifier.height(30.dp))
                 BlobLoading()
             }
 
