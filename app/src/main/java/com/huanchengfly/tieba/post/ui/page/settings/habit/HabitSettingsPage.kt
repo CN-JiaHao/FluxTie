@@ -162,6 +162,22 @@ fun HabitSettingsPage(
                 }
             }
             prefsItem {
+                SwitchPref(
+                    key = "parallel_window",
+                    title = "平行视窗（平板双栏）",
+                    summary = { if (it) "宽屏时左列表、右详情，可拖动中缝调宽" else "始终单栏显示" },
+                    defaultChecked = true,
+                ) {
+                    LeadingIcon {
+                        AvatarIcon(
+                            icon = Icons.Outlined.CalendarViewDay,
+                            size = Sizes.Small,
+                            contentDescription = null,
+                        )
+                    }
+                }
+            }
+            prefsItem {
                 ListPref(
                     key = "default_sort_type",
                     title = stringResource(id = R.string.title_settings_default_sort_type),

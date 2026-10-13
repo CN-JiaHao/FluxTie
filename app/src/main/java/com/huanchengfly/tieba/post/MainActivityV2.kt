@@ -92,6 +92,7 @@ import com.huanchengfly.tieba.post.components.ClipBoardLinkDetector
 import com.huanchengfly.tieba.post.components.ClipBoardThreadLink
 import com.huanchengfly.tieba.post.services.NotifyJobService
 import com.huanchengfly.tieba.post.rememberPreferenceAsState
+import com.huanchengfly.tieba.post.ui.common.pane.ParallelWindowNavHost
 import com.huanchengfly.tieba.post.ui.common.theme.compose.ExtendedTheme
 import com.huanchengfly.tieba.post.ui.page.NavGraphs
 import com.huanchengfly.tieba.post.ui.page.destinations.ForumPageDestination
@@ -575,9 +576,8 @@ class MainActivityV2 : BaseComposeActivity() {
                         sheetBackgroundColor = ExtendedTheme.colors.windowBackground,
                         scrimColor = Color.Black.copy(alpha = 0.32f),
                     ) {
-                        DestinationsNavHost(
+                        ParallelWindowNavHost(
                             navController = navController,
-                            navGraph = NavGraphs.root,
                             engine = engine,
                         )
                     }
