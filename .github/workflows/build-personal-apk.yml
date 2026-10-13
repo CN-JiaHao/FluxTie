@@ -40,18 +40,19 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew assembleRelease
 
-      - name: Read Output Metadata
-        id: meta
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./app/build/outputs/apk/release/output-metadata.json
-          trim: true
+      - name: Read version
+        id: ver
+        if: success()
+        run: |
+          echo "name=$(grep '^versionName=' application.properties | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+          echo "code=$(grep '^versionCode=' application.properties | cut -d= -f2)" >> "$GITHUB_OUTPUT"
 
       - name: Create Release
+        if: success()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION_NAME: ${{ fromJSON(steps.meta.outputs.content).elements[0].versionName }}
-          VERSION_CODE: ${{ fromJSON(steps.meta.outputs.content).elements[0].versionCode }}
+          VERSION_NAME: ${{ steps.ver.outputs.name }}
+          VERSION_CODE: ${{ steps.ver.outputs.code }}
         run: |
           TAG="personal-r${GITHUB_RUN_NUMBER}"
           gh release delete "$TAG" --yes --cleanup-tag || true

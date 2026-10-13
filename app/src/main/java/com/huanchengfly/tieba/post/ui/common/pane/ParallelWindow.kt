@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -32,7 +33,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import androidx.navigation.navigate
+import androidx.navigation.navOptions
 import com.huanchengfly.tieba.post.arch.BaseComposeActivity.Companion.LocalWindowSizeClass
 import com.huanchengfly.tieba.post.rememberPreferenceAsState
 import com.huanchengfly.tieba.post.ui.common.theme.compose.ExtendedTheme
@@ -108,10 +109,9 @@ fun ParallelWindowNavHost(
                         seeLz = bundle.getBoolean("seeLz", false),
                         sortType = bundle.getInt("sortType", 0),
                         from = bundle.getString("from").orEmpty(),
-                    )
-                ) {
-                    launchSingleTop = true
-                }
+                    ),
+                    navOptions { launchSingleTop = true },
+                )
                 navController.popBackStack()
             }
         navController.addOnDestinationChangedListener(listener)
