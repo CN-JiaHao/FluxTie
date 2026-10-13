@@ -1,19 +1,19 @@
 package com.huanchengfly.tieba.post.ui.widgets.compose
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.EaseInCubic
 import androidx.compose.animation.core.EaseOutCubic
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -92,42 +92,69 @@ private val SplashFontFamily = FontFamily(
 )
 
 /**
- * 应用内启动屏（单屏）：应用图标 + 标语 + FluxTie + 液态 blob Loading + 底部版本号。
- * 视觉上从系统启动屏（应用图标屏）无缝延续：同底色、图标同位。
- * 编排：图标轻柔入场；450ms 后标语淡入上浮；随后 FluxTie 淡入；720ms 后 blob 淡入持续流动形变。
- * 退场：前景内容先行收束（缩放+上浮+快淡出），背景色慢速退隐，与底层页面交叉溶解。
- * 背景与系统启动屏同源（colorSplashBg）。
+ * 应用内启动屏（一镜到底流体编排）：
+ * 1. 初始阶段（0~420ms）：Logo 严格处于屏幕物理中心（160dp 满态），零偏差承接系统启动屏动效。
+ * 2. 一镜到底升维（420~1000ms）：Logo 平滑上浮（0dp -> -96dp）并等比缩放（160dp -> 96dp），成为 Loading 加载页的头部图标。
+ * 3. 内容梯次随动（540~1000ms）：随着 Logo 腾出空间，标语（见闻生活新知）、FluxTie 应用名与液态 Blob Loading 顺势跟进滑入展现。
+ * 4. 退场交接：首页数据就绪后，整体品牌面板轻柔向上浮升淡出，底栏与 Feed 流迎面浮现。
  */
 @Composable
 fun AppSplashOverlay() {
-    // 初始即满屏:与系统启动屏同色无缝衔接,避免淡入期露出底层页面
     var visible by remember { mutableStateOf(true) }
-    val density = LocalDensity.current
-    val contentTranslatePx = with(density) { 12.dp.toPx() }
+    var isHeaderStage by remember { mutableStateOf(false) }
 
-    val transition = updateTransition(targetState = visible, label = "splash")
+    // 1. 一镜到底核心动效：Logo 向上浮升并在空间上等比缩放
+    val logoTranslateY by animateDpAsState(
+        targetValue = if (isHeaderStage) (-96).dp else 0.dp,
+        animationSpec = tween(durationMillis = 580, easing = FastOutSlowInEasing),
+        label = "logoTranslateY"
+    )
+    val logoScale by animateFloatAsState(
+        targetValue = if (isHeaderStage) 0.60f else 1.0f,
+        animationSpec = tween(durationMillis = 580, easing = FastOutSlowInEasing),
+        label = "logoScale"
+    )
+
+    // 2. 标语、应用名与 Loading 随动滑入与淡入
+    val contentRevealAlpha by animateFloatAsState(
+        targetValue = if (isHeaderStage) 1.0f else 0.0f,
+        animationSpec = tween(durationMillis = 420, delayMillis = 120, easing = FastOutSlowInEasing),
+        label = "contentRevealAlpha"
+    )
+    val contentRevealSlide by animateDpAsState(
+        targetValue = if (isHeaderStage) 0.dp else 24.dp,
+        animationSpec = tween(durationMillis = 460, delayMillis = 120, easing = FastOutSlowInEasing),
+        label = "contentRevealSlide"
+    )
+
+    // 3. 整体退场过渡（开门交接）
+    val transition = updateTransition(targetState = visible, label = "splashExit")
     val bgAlpha by transition.animateFloat(
-        transitionSpec = { tween(durationMillis = 320, easing = LinearEasing) },
+        transitionSpec = { tween(durationMillis = 300, easing = LinearEasing) },
         label = "splashBgAlpha"
     ) { if (it) 1f else 0f }
-    val contentAlpha by transition.animateFloat(
+    val exitAlpha by transition.animateFloat(
         transitionSpec = { tween(durationMillis = 220, easing = EaseInCubic) },
-        label = "splashContentAlpha"
+        label = "splashExitAlpha"
     ) { if (it) 1f else 0f }
-    val contentScale by transition.animateFloat(
+    val exitScale by transition.animateFloat(
         transitionSpec = { tween(durationMillis = 260, easing = FastOutSlowInEasing) },
-        label = "splashContentScale"
+        label = "splashExitScale"
     ) { if (it) 1f else 0.96f }
-    val contentTranslate by transition.animateFloat(
+    val exitTranslateY by transition.animateDp(
         transitionSpec = { tween(durationMillis = 260, easing = FastOutSlowInEasing) },
-        label = "splashContentTranslate"
-    ) { if (it) 0f else contentTranslatePx }
+        label = "splashExitTranslateY"
+    ) { if (it) 0.dp else (-18).dp }
 
     LaunchedEffect(Unit) {
         SplashState.reset()
         val start = System.currentTimeMillis()
-        // 循环播放直到：加载完成且达到最短展示时长；3.5s 超时兜底
-        val minDuration = 1400L
+        // 约 420ms 后无缝承接系统启动屏动效终态，启动一镜到底上浮
+        delay(420)
+        isHeaderStage = true
+
+        // 循环播放直到：加载完成且达到最短展示时长（1500ms 保证一镜到底完整呈现）；3.5s 超时兜底
+        val minDuration = 1500L
         val timeout = 3500L
         while (true) {
             val elapsed = System.currentTimeMillis() - start
@@ -137,6 +164,7 @@ fun AppSplashOverlay() {
         visible = false
         SplashState.finished.value = true
     }
+
     if (bgAlpha > 0.01f) {
         val splashBg = colorResource(id = R.color.colorSplashBg)
         Box(
@@ -145,66 +173,60 @@ fun AppSplashOverlay() {
                 .graphicsLayer { alpha = bgAlpha }
                 .background(splashBg)
         ) {
-            // 核心应用图标：严格居中对齐屏幕中心，与系统启动屏 160dp 圆底同源同位零偏差对齐
+            // 核心应用图标：初始 160dp 绝对居中，随着一镜到底上移至头部并等比缩放至 96dp
             Box(
                 modifier = Modifier
                     .align(Alignment.Center)
                     .graphicsLayer {
-                        alpha = contentAlpha
-                        scaleX = contentScale
-                        scaleY = contentScale
+                        translationY = (logoTranslateY + exitTranslateY).toPx()
+                        scaleX = logoScale * exitScale
+                        scaleY = logoScale * exitScale
+                        alpha = exitAlpha
                     }
             ) {
                 SplashBrandIcon(size = 160.dp)
             }
 
-            // 品牌文案与 Loading：锚定在中心图标正下方，梯次微延时淡入
+            // 品牌文案与 Loading：在 Logo 上浮过程中顺势跟随滑入展开，紧随 Logo 底部
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .offset(y = 160.dp)
+                    .offset(y = 4.dp)
                     .graphicsLayer {
-                        alpha = contentAlpha
-                        scaleX = contentScale
-                        scaleY = contentScale
-                        translationY = contentTranslate
+                        translationY = (contentRevealSlide + exitTranslateY).toPx()
+                        alpha = contentRevealAlpha * exitAlpha
+                        scaleX = exitScale
+                        scaleY = exitScale
                     }
             ) {
-                // 标语：微延时淡入上浮
-                SplashFadeIn(delayMillis = 180) {
-                    Text(
-                        text = stringResource(id = R.string.splash_tagline),
-                        fontSize = 14.sp,
-                        letterSpacing = 2.sp,
-                        fontFamily = SplashFontFamily,
-                        color = ExtendedTheme.colors.textSecondary
-                    )
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-                // 应用名:标语之后、Loading 之前
-                SplashFadeIn(delayMillis = 280) {
-                    Text(
-                        text = "FluxTie",
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Medium,
-                        letterSpacing = 3.sp,
-                        fontFamily = SplashFontFamily,
-                        color = ExtendedTheme.colors.text
-                    )
-                }
-                Spacer(modifier = Modifier.height(36.dp))
-                // 液态 blob Loading：应用名出现后微延时淡入
-                SplashFadeIn(delayMillis = 380) {
-                    BlobLoading()
-                }
+                Text(
+                    text = stringResource(id = R.string.splash_tagline),
+                    fontSize = 14.sp,
+                    letterSpacing = 2.sp,
+                    fontFamily = SplashFontFamily,
+                    color = ExtendedTheme.colors.textSecondary
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "FluxTie",
+                    fontSize = 26.sp,
+                    fontWeight = FontWeight.Medium,
+                    letterSpacing = 3.sp,
+                    fontFamily = SplashFontFamily,
+                    color = ExtendedTheme.colors.text
+                )
+                Spacer(modifier = Modifier.height(28.dp))
+                BlobLoading()
             }
+
+            // 底部版本号
             Text(
                 text = stringResource(id = R.string.summary_about_version, BuildConfig.VERSION_NAME),
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Medium,
                 fontFamily = SplashFontFamily,
-                color = ExtendedTheme.colors.textSecondary.copy(alpha = contentAlpha),
+                color = ExtendedTheme.colors.textSecondary.copy(alpha = exitAlpha),
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 32.dp)
@@ -238,24 +260,6 @@ private fun SplashBrandIcon(
     }
 }
 
-/** 延时淡入 + 上浮入场 */
-@Composable
-private fun SplashFadeIn(delayMillis: Int, content: @Composable () -> Unit) {
-    var entered by remember { mutableStateOf(false) }
-    LaunchedEffect(Unit) {
-        delay(delayMillis.toLong())
-        entered = true
-    }
-    AnimatedVisibility(
-        visible = entered,
-        enter = fadeIn(tween(durationMillis = 280)) +
-                slideInVertically(
-                    animationSpec = tween(durationMillis = 280, easing = FastOutSlowInEasing)
-                ) { it / 2 },
-    ) {
-        content()
-    }
-}
 
 /**
  * 液态 blob Loading：8 点谐波半径驱动闭合曲线持续流动形变（液滴/水球效果），
