@@ -22,8 +22,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -134,20 +139,31 @@ fun AppSplashOverlay() {
     }
     if (bgAlpha > 0.01f) {
         val splashBg = colorResource(id = R.color.colorSplashBg)
-        val context = LocalContext.current
-        val appIconBitmap = remember {
-            context.packageManager.getApplicationIcon(context.packageName).toBitmap().asImageBitmap()
-        }
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .graphicsLayer { alpha = bgAlpha }
                 .background(splashBg)
         ) {
+            // 核心应用图标：严格居中对齐屏幕中心，与系统启动屏 160dp 圆底同源同位零偏差对齐
+            Box(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .graphicsLayer {
+                        alpha = contentAlpha
+                        scaleX = contentScale
+                        scaleY = contentScale
+                    }
+            ) {
+                SplashBrandIcon(size = 160.dp)
+            }
+
+            // 品牌文案与 Loading：锚定在中心图标正下方，梯次微延时淡入
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .align(Alignment.Center)
+                    .offset(y = 160.dp)
                     .graphicsLayer {
                         alpha = contentAlpha
                         scaleX = contentScale
@@ -155,11 +171,6 @@ fun AppSplashOverlay() {
                         translationY = contentTranslate
                     }
             ) {
-                // 应用图标:与系统启动屏同源同位延续,轻柔缩放入场
-                SplashIconEntrance {
-                    AppIcon(bitmap = appIconBitmap)
-                }
-                Spacer(modifier = Modifier.height(24.dp))
                 // 标语：微延时淡入上浮
                 SplashFadeIn(delayMillis = 180) {
                     Text(
@@ -182,7 +193,7 @@ fun AppSplashOverlay() {
                         color = ExtendedTheme.colors.text
                     )
                 }
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(36.dp))
                 // 液态 blob Loading：应用名出现后微延时淡入
                 SplashFadeIn(delayMillis = 380) {
                     BlobLoading()
@@ -202,27 +213,28 @@ fun AppSplashOverlay() {
     }
 }
 
-/** 应用图标渲染:自适应图标经 PackageManager 取真实位图(与系统启动屏一致) */
+/**
+ * 启动屏品牌图标：严格保持与系统 SplashScreen 规范（160dp 核心圆底）像素级一致。
+ * 强制圆形裁剪（CircleShape）+ ic_launcher_new_background 品牌底色 + ic_launcher_new_foreground 矢量前景。
+ * 彻底消除在 HyperOS / OneUI 等自适应桌面图标下，从系统启动屏圆形跳变为桌面圆角矩形（Squircle）的「圆角跳闪」。
+ */
 @Composable
-private fun AppIcon(bitmap: ImageBitmap) {
-    Image(
-        bitmap = bitmap,
-        contentDescription = null,
-        modifier = Modifier.size(96.dp)
-    )
-}
-
-/** 图标入场:与系统启动屏同源同位延续,初始满态无缝衔接动画终态 */
-@Composable
-private fun SplashIconEntrance(content: @Composable () -> Unit) {
-    val scale = remember { Animatable(1f) }
-    val iconAlpha = remember { Animatable(1f) }
-    Box(modifier = Modifier.graphicsLayer {
-        scaleX = scale.value
-        scaleY = scale.value
-        alpha = iconAlpha.value
-    }) {
-        content()
+private fun SplashBrandIcon(
+    modifier: Modifier = Modifier,
+    size: Dp = 160.dp
+) {
+    Box(
+        modifier = modifier
+            .size(size)
+            .clip(CircleShape)
+            .background(colorResource(id = R.color.ic_launcher_new_background)),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_new_foreground),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
     }
 }
 
@@ -302,7 +314,7 @@ private fun DrawScope.drawLiquidBlob(phase: Float, brush: Brush) {
     for (i in 1..points) {
         val control = vertices[i % points]
         val anchor = mid(control, vertices[(i + 1) % points])
-        path.quadraticBezierTo(control.x, control.y, anchor.x, anchor.y)
+        path.quadraticTo(control.x, control.y, anchor.x, anchor.y)
     }
     path.close()
     drawPath(path, brush)

@@ -361,7 +361,16 @@ class MainActivityV2 : BaseComposeActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
+        val splashScreen = installSplashScreen()
+        splashScreen.setOnExitAnimationListener { splashScreenViewProvider ->
+            splashScreenViewProvider.view.animate()
+                .alpha(0f)
+                .setDuration(240L)
+                .withEndAction {
+                    splashScreenViewProvider.remove()
+                }
+                .start()
+        }
         super.onCreate(savedInstanceState)
         window.decorView.setBackgroundColor(0)
         window.setBackgroundDrawable(ColorDrawable(0))
