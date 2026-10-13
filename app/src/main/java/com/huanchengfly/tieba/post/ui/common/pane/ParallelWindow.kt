@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -66,6 +67,7 @@ private const val DEFAULT_LIST_WEIGHT = 0.42f
 private const val MIN_LIST_WEIGHT = 0.3f
 private const val MAX_LIST_WEIGHT = 0.7f
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ParallelWindowNavHost(
     navController: NavHostController,
